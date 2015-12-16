@@ -1,0 +1,16 @@
+<h1><%= movie.Title %>
+  <small><%= movie.Year %></small>
+</h1>
+
+<a href="<%= '/movies/?q=' + q %>" class="btn btn-primary">&larr; Back to Search</a>
+
+<div class="well">
+  <p><%= movie.Plot %></p>
+</div>
+
+<form method="POST" action="/favorites">
+  <input type="hidden" value="<%= movie.imdbID %>" name="imdbID">
+  <input type="hidden" value="<%= movie.Year %>" name="year">
+  <input type="hidden" value="<%= movie.Title %>" name="title">
+  <input type="submit" class="btn btn-success" value="Add to Favorites">
+</form>
