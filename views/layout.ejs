@@ -7,13 +7,18 @@
 	<title>Wishlists!</title>
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
 		<% include ./partials/alerts %>
 		</div>
+	<% if (currentUser) { %>
+		<a href>
+	<% } %>
 	<a href="/">Search</a>
 	<a href="/wishlists">Wishlists</a>
 	<%- body %>
 	</div>
+	<script type="text/javascript" src="/javascripts/script.js"></script>
 </body>
 </html>

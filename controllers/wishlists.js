@@ -14,7 +14,7 @@ router.get('/new',function(req, res) {
 	res.render('wishlists/new');
 });
 
-router.get('/',function(req, res) {
+router.get('/:id',function(req, res) {
 	res.render('wishlists/oneList');
 });
 
@@ -29,6 +29,16 @@ router.post('/', function(req, res) {
 		req.flash('danger', 'didn\'t store in db: ' + e);
 	});
 });
+
+router.delete('/:id', function(req, res) {
+	db.wishlist.destroy({
+		where: {
+			id: req.params.id
+		}
+	}).then(function() {
+		res.send('success');
+	});
+})
 
 
 module.exports = router;
