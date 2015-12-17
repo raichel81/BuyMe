@@ -1,27 +1,58 @@
 var express = require('express');
 var request = require('request');
 var router = express.Router();
+var util = require('util');
+var OperationHelper = require('apac').OperationHelper;
+
 
 router.get('/', function(req, res) {
-  var query = req.query.q;
-  request('http://www.amazonapi.com/?s=' + query, function(err, response, body) {
-    var data = JSON.parse(body);
-    if (!err && response.statusCode === 200 && data.Search) {
-      res.render('search/index', {items: data.Search,
-                            q: query});
-    } else {
-      res.render('error');
-    }
+  res.render('search/index');
+});
+
+router.get('/results', function(req, res) {
+
+
+  getProductData(searchTerm, function(results) {
+
   });
 });
 
-router.get('/:imdbID', function(req, res) {
-  var searchQuery = req.query.q ? req.query.q : '';
-  var imdbID = req.params.imdbID;
-  request('http://www.amazonapi.com/?i=' + imdbID, function(err, response, body) {
-    res.render('search/show', {item: JSON.parse(body),
-                             q: searchQuery});
+
+function getProductData(searchTerm, callback) {
+
+  var opHelper = new OperationHelper({
+      awsId:     'AKIAJNSV7UBCKXE5VNVA',
+      awsSecret: 'q0aDklr0YujSkWw4EexW4QjK9K5Rcawbim7sMPkY',
+      assocId:   'bume04b-20',
+      version:   '2013-08-01'
+      // your version of using product advertising api, default: 2013-08-01
   });
-});
+
+  opHelper.execute('ItemSearch', {
+    'SearchIndex': 'All',
+    'Keywords': searchTerm,
+    'ResponseGroup': 'ItemAttributes,Images'
+  }, function(err, results) {
+    if(err) {
+      // do something with the error
+    } else {
+      var simpleItems = [];
+
+      var items = results.ItemSearchResponse.Items[0].Item;
+      items.forEach(function(item) {
+        var simpleItem = {
+          title: item.ItemAttributes[0].Title[0],
+          price: item.ItemAttributes[0].ListPrice[0].FormattedPrice[0],
+          imageURL: item.LargeImage[0].URL[0],
+          amazonURL: item.DetailPageURL[0]
+        };
+
+        simpleItems.push(simpleItem);
+      });
+
+      callback(results);
+    }
+  });
+}
 
 module.exports = router;

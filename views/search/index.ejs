@@ -1,9 +1,14 @@
 
 <div class="col-md-6">
-	<h1>Search Results</h1>
 
-	<% items.forEach(function(item) { %>
-	<div class="well">item.title + '/?q=' + q %>"><h2><%= item.Title %></h2></a>
-	</div>
-	<% }); %>
+
+	<form action="/search/results" method="GET" role="form">
+	  <legend>Search for Items</legend>
+
+	  <div class="form-group">
+	    <label for="">Search</label>
+	    <input type="text" class="form-control" id="" placeholder="What are you looking for?" name="searchTerm">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
 </div>

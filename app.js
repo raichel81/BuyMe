@@ -58,7 +58,7 @@ app.use(function(req, res, next) {
 // Wire up routes
 app.use('/', require('./controllers/index'));
 app.use('/wishlists', require('./controllers/wishlists'));
-// app.use('/search', require('./controllers/search'));
+app.use('/search', require('./controllers/search'));
 app.use('/users', require('./controllers/users'));
 app.use('/login', require('./controllers/login'));
 
