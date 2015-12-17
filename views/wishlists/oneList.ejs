@@ -1,0 +1,14 @@
+<div class="col-md-6">
+	<% items.forEach(function(wishlist) { %>
+	  <div class="well">
+	    <h2><%= items.listName %>
+	      <small><%= wishlist.description %></small>
+	    </h2>
+	    <a href="/wishlists/<%= items.id %>" class="btn btn-primary">Edit</a>
+
+	    <a href="/wishlists/<%= items.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
+	  </div>
+	<% }); %>
+
+	<a href="/search" class="btn btn-primary">Search</a>
+</div>

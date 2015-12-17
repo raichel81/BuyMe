@@ -6,9 +6,10 @@
 	    <h2><%= wishlist.listName %>
 	      <small><%= wishlist.description %></small>
 	    </h2>
-	    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-primary">Show More Details</a>
+	    <a href="/wishlists/oneList<%= wishlist.listName %>" class="btn btn-primary">View List</a>
 
 	    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
+
 	  </div>
 	<% }); %>
 

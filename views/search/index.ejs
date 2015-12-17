@@ -1,8 +1,9 @@
 
-<h1>Search Results</h1>
+<div class="col-md-6">
+	<h1>Search Results</h1>
 
-<% movies.forEach(function(movie) { %>
-<div class="well">
-  <a href="<%= '/movies/' + movie.imdbID + '/?q=' + q %>"><h2><%= movie.Title %></h2></a>
+	<% items.forEach(function(item) { %>
+	<div class="well">item.title + '/?q=' + q %>"><h2><%= item.Title %></h2></a>
+	</div>
+	<% }); %>
 </div>
-<% }); %>

@@ -14,6 +14,10 @@ router.get('/new',function(req, res) {
 	res.render('wishlists/new');
 });
 
+router.get('/',function(req, res) {
+	res.render('wishlists/oneList');
+});
+
 router.post('/', function(req, res) {
 	db.wishlist.create({
 		listName: req.body.name,
