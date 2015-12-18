@@ -11,14 +11,20 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.STRING
+      },
       price: {
-        type: Sequelize.REAL
+        type: Sequelize.STRING
       },
       imageURL: {
         type: Sequelize.STRING
       },
       amazonURL: {
         type: Sequelize.STRING
+      },
+      wishlistId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

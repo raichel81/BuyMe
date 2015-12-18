@@ -1,6 +1,39 @@
-	<!-- <h1>Search Results</h1>
+<h1>Search Results</h1>
 
-	<% items.forEach(function(item) { %>
-	<div class="well">item.title + '/?q=' + q %>"><h2><%= item.Title %></h2></a>
+<% items.forEach(function(item, i) { %>
+<div class="well col-md-6 col-centered">
+
+ 	<div><%= item.title %></div>
+ 	<br> <br>
+ 	<div>List Price: <%= item.price %></div>
+ 	<br> <br>
+ 	<img src="<%= item.imageURL %>"class="img-rounded">
+ 	<a target="_blank" href="<%= item.amazonURL %>">Open on Amazon</a>
+
+ 	<!-- Split button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-success">Add to a Wishlist</button>
+	  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    <span class="caret"></span>
+	    <span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul class="dropdown-menu">
+	  	<% wishlists.forEach(function(wishlist) { %>
+	  	  	<li><a href="#" onclick="addItemToWishlist(<%= i %>, <%= wishlist.id %>); return false;">
+	  	  	<%= wishlist.listName %>
+	  	 	</a></li>
+	    <% }) %>
+    	<li role="separator" class="divider"></li>
+		<li><a href="/wishlists/new">Create a Wishlist</a></li>
+	  </ul>
 	</div>
-	<% }); %> -->
+
+ 	<form id="item-<%= i %>" method="POST" action="/items">
+		<input type="hidden" value="<%= item.title%>" name="title">
+		<input type="hidden" value="<%= item.price %>" name="price">
+		<input type="hidden" value="<%= item.imageURL %>" name="imageURL">
+		<input type="hidden" value="<%= item.amazonURL %>" name="amazonURL">
+		<input class="wishlistIdField" type="hidden" value="" name="wishlistId">
+	</form>
+ </div>
+ <% }); %>

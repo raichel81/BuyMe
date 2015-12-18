@@ -1,17 +1,22 @@
-<!-- TODO: other stuff about who's currently logged in -->
-<!-- TODO: handle the case of no wishlists yet -->
-<div class="col-md-6">
-	<% wishlists.forEach(function(wishlist) { %>
-	  <div class="well">
-	    <h2><%= wishlist.listName %>
-	      <small><%= wishlist.description %></small>
-	    </h2>
-	    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-primary">View List</a>
 
-	    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
+<div class="container">
+	<div class="row row-centered">
+        <div class="col-md-6 col-centered">
+			<% wishlists.forEach(function(wishlist) { %>
+			  <div class="well">
+			    <h2><%= wishlist.listName %>
+			    <br> <br>
+			      <small><%= wishlist.description %></small>
+			    </h2>
+			    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-primary">View List</a>
 
-	  </div>
-	<% }); %>
+			    <a href="/wishlists/<%= wishlist.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
 
-	<a href="/wishlists/new" class="btn btn-primary">Create New</a>
+			  </div>
+			<% }); %>
+
+			<a href="/wishlists/new" class="btn btn-primary">Create New</a>
+			<a href="/search" class="btn btn-success pull-right">Search</a>
+		</div>
+	</div>
 </div>

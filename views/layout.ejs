@@ -2,23 +2,45 @@
 <html>
 <head>
 	<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen">
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<title>Wishlists!</title>
+	<title>Buy Me</title>
 </head>
+
 <body>
 
-	<div class="container">
-		<div class="row">
-		<% include ./partials/alerts %>
+<% if(currentUser) { %>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="static">
+				<a  href="/search">Search</a>
+				<a  href="/wishlists">Wishlists</a>
+				<a  href="/">Home</a>
+
+			</div>
+			<a href="/login/logout" class="btn btn-default navbar-btn">Log out</a>
+			<p class="navbar-text navbar-right">Signed in as: 
+				<a href="/wishlists" class="navbar-link"><%= currentUser.name %></a>
+			</p>
 		</div>
-	<% if (currentUser) { %>
-		<a href>
-	<% } %>
-	<a href="/search">Search</a>
-	<a href="/wishlists">Wishlists</a>
-	<%- body %>
+	</nav>
+
+<% } else { %>
+<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			
+			<a href="/login" class="btn btn-default navbar-btn">Log in</a>
+			<a href="/users" class="btn btn-default navbar-btn">Sign Up</a>
+		</div>
+	</nav>
+<% } %>
+<div class="container">
+	<div class="row">
+		<% include ./partials/alerts %>
 	</div>
+</div>
+	<%- body %>
 	<script type="text/javascript" src="/javascripts/script.js"></script>
 </body>
 </html>

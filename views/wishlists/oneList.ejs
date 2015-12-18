@@ -1,13 +1,23 @@
-<div class="col-md-6">
-	<% items.forEach(function(wishlist) { %>
-	  <div class="well">
-	    <h2><%= items.listName %>
+<div class="col-md-6 col-centered">
+	
+	<div class="well">
+	    <h2><%= wishlist.listName %>
 	      <small><%= wishlist.description %></small>
-	    </h2>
-	    <a href="/wishlists/<%= items.id %>" class="btn btn-primary">Edit</a>
-
-	    <a href="/wishlists/<%= items.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
-	  </div>
+	    </h2> 
+	</div>   
+	<% items.forEach(function(item) { %>
+		<div class="well">
+			<div><%= item.title %></div>
+	 		<br> <br>
+	 		<div>List Price: <%= item.price %></div>
+	 		<br> <br>
+	 		<img src="<%= item.imageURL %>"class="img-rounded">
+	 		<a target="_blank" href="<%= item.amazonURL %>">Open on Amazon</a>
+	 		<br> <br>
+	 		<div><%= item.description %></div>
+		    <a href="/items/<%= item.id %>" class="btn btn-primary">Add Notes</a>
+		    <a href="/items/<%= item.id %>" class="btn btn-danger pull-right delete-btn">Remove</a>
+		</div>
 	<% }); %>
 
 	<a href="/search" class="btn btn-primary">Search</a>

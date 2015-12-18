@@ -35,7 +35,7 @@ app.use(session({
 
 // Load the user for the current session
 app.use(function(req, res, next) {
-  req.session.user = 9;
+  req.session.user = 14;
   if (req.session.user) {
     db.user.findById(req.session.user).then(function(user) {
       req.currentUser = user;
@@ -61,6 +61,7 @@ app.use('/wishlists', require('./controllers/wishlists'));
 app.use('/search', require('./controllers/search'));
 app.use('/users', require('./controllers/users'));
 app.use('/login', require('./controllers/login'));
+app.use('/items', require('./controllers/items'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

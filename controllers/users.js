@@ -2,7 +2,7 @@ var db = require('../models');
 var express = require('express');
 var router = express.Router();
 
-router.get('/new',function(req, res) {
+router.get('/',function(req, res) {
 	res.render('users/new');
 });
 
@@ -39,75 +39,5 @@ router.post('/', function(req, res) {
 		});
 	}
 });
-
-
-
-
-// Show the user's page - /users/:id
-// show an edit for
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO: Create route and view for "create user" on POST
-router.post('/', function(req, res) {
-	// db.user.create...
-	// then redirect to the user's logged in home page
-
-});
-
-
-
-// router.get('/login', function(req, res) {
-// 	res.render('user/login');
-// });
-
-// router.post('/login', function(req, res) {
-// 	db.user.authenticate(req.body.email, req.body.password, function(err, user) {
-// 		if (err) {
-// 			res.send(err);
-// 		} else if (user) {
-// 			req.session.user = user.id;
-// 			res.redirect('/');
-// 		} else {
-// 			// invalid username or password error todo
-// 			res.redirect('/auth/login');
-// 		}
-// 	});
-// });
-
-// router.get('/logout', function(req, res) {
-// 	//todo send logout message
-// 	req.session.user = false;
-// 	res.redirect('/');
-// });
-
 
 module.exports = router;

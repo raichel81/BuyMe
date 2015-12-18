@@ -10,12 +10,16 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/new',function(req, res) {
+router.get('/new', function(req, res) {
 	res.render('wishlists/new');
 });
 
 router.get('/:id',function(req, res) {
-	res.render('wishlists/oneList');
+	db.wishlist.findById(req.params.id).then(function(wishlist) {
+		wishlist.getItems().then(function(items) {
+			res.render('wishlists/oneList', {wishlist: wishlist, items: items});
+		});
+	});
 });
 
 router.post('/', function(req, res) {
@@ -38,7 +42,6 @@ router.delete('/:id', function(req, res) {
 	}).then(function() {
 		res.send('success');
 	});
-})
-
+});
 
 module.exports = router;

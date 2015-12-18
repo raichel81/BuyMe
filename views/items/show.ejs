@@ -1,0 +1,13 @@
+<div class="col-md-6 col-centered">
+	<h1>Create or Change Item Note</h1>
+	<form class="form" method="POST" action="/items/update">
+		 <div class="well">
+	    <h2><%= item.title %>
+
+	    </h2>
+		<br> <br>
+		<input type="hidden" value="<%= item.id %>" name="id">
+		<input type="text" class="form-control" placeholder="Any notes for this item on size, color, number etc?" name="description" value="<%= item.description %>">
+		<input type="submit" value="Create/Edit" class="btn btn-primary">
+	</form>
+</div>

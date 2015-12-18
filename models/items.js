@@ -2,7 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var items = sequelize.define('items', {
     title: DataTypes.STRING,
-    price: DataTypes.REAL,
+    description: DataTypes.STRING,
+    price: DataTypes.STRING,
     imageURL: DataTypes.STRING,
     amazonURL: DataTypes.STRING
   }, {
