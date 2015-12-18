@@ -35,7 +35,7 @@ app.use(session({
 
 // Load the user for the current session
 app.use(function(req, res, next) {
-  req.session.user = 14;
+  // req.session.user = 14;
   if (req.session.user) {
     db.user.findById(req.session.user).then(function(user) {
       req.currentUser = user;

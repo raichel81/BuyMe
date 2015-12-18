@@ -51,9 +51,9 @@ router.post('/new', function(req, res) {
 function getProductData(searchTerm, callback) {
 
   var opHelper = new OperationHelper({
-      awsId:     'AKIAJNSV7UBCKXE5VNVA',
-      awsSecret: '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',
-      assocId:   'bume04b-20',
+      awsId:     process.env.AWS_ID,
+      awsSecret: process.env.AWS_SECRET,
+      assocId:   process.env.AWS_ASSOCID,
       version:   '2013-08-01'
       // your version of using product advertising api, default: 2013-08-01
   });
@@ -98,8 +98,8 @@ function getPrice(itemData) {
 }
 
 function getImageURL(itemData) {
-  // TODO: Replace with default URL
-  var imageURL = "";
+
+  var imageURL = "/images/no-thumb.png";
   try {
     imageURL = itemData.LargeImage[0].URL[0];
   } catch(e) {

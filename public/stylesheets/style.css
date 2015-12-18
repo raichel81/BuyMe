@@ -23,7 +23,7 @@ a {
 .static{
 	text-align: center;
 	margin-top: 6px;
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .static a~a {
